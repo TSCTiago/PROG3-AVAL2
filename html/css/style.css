@@ -42,32 +42,29 @@ img {
     color: #ff5863;
 }
 
-.links ul {
+.links {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px;
+    margin-top: 50px; 
 }
 
-.links ul li {
-    list-style: none;
+.links input {
     margin: 0 20px;
     background-color: #ffa334;
-    padding: 10px 50px;
+    padding: 10px;
+    border: none;
     border-radius: 5px;
-    width: 210px;
-}
-
-.links ul li a {
-    text-decoration: none;
+    width: 250px;
     font-family: GothamBold;
     font-size: 1.2rem;
     color: #3c389e;
     transition: all 0.5s ease-in-out;
+    text-align: center;
+    cursor: pointer;
 }
 
-
-.links ul li a:hover {
+.links input:hover {
     background-color: #3c389e;
     color: #ffa334;
     
@@ -79,14 +76,12 @@ img {
         width: 50%;
     }
     
-    .links ul {
+    .links{
         display: flex;
         flex-direction: column;
     }
     
-    .links ul li {
+    .links input {
         margin: 10px;
-
-        
     }
 }
