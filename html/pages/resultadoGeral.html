@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/pages.css">
+    <title>Resultado Geral</title>
+</head>
+<style>
+    .total{
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+    }
+</style>
+<body>
+    <header>
+        <nav class="nav-bar">
+           
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="candidate.html">Por Candidato</a></li>
+                <li><a href="cargo.html">Por Cargo</a></li>
+                <li><a href="municipio.html">Por município</a></li>
+                <li><a href="resultadoGeral.html">Resultado geral</a></li>
+            </ul>
+            <div class="logo"><img src="../assets/img/logo.png" alt="log"></div>
+        </nav>
+    </header>
+    <section class="pages">
+        <div>
+            <h1>Ver resultados Gerais</h1>
+        </div>
+        <div>
+            <select name="resultado" id="resultado">
+                <option value="">Selecione um filtro</option>
+                <option value="0">Todos</option>
+                <option value="1">Eleitos</option>
+                <option value="2">Não Eleitos</option>
+            </select>
+        </div>
+        <div class="table">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Votação</th>
+                        <th>Status</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                   
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="../js/resultadoGeral.js"></script>
+</body>
+</html>
