@@ -1,0 +1,141 @@
+@font-face {
+    font-family: GothamLight;
+    src: url('../assets/fonts/GothamLight.ttf');
+}
+
+@font-face {
+    font-family: GothamBold;
+    src: url('../assets/fonts/GothamBold.otf');
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.822)),url('../assets/img/background-image.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 100% 45%;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3c389e;
+    margin-bottom: 20px;
+    padding: 2px 40px;
+    box-shadow: 2px 5px 5px #555353;
+}
+
+.nav-bar ul {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar ul li {
+    list-style: none;
+    margin: 0 20px;
+}
+
+.nav-bar ul li a {
+    font-family: GothamBold;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-bar ul li a:hover {
+    color: #ffa334;
+}
+
+.logo{
+    margin-right: 20px;
+}
+.logo img{
+    width: 80px;
+}
+h1 {
+    font-family: GothamBold;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    /* color: #3c389e; */
+    color: white;
+    margin-bottom: 50px;
+}
+
+select {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-family: GothamBold;
+    border: 2px solid #ffa334;
+
+}
+
+
+select,
+.styled-table,
+.total {
+    width: 60%;
+}
+
+select option {
+    font-family: GothamLight;
+}
+
+.pages {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #3c389e;
+    font-family: GothamBold;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 8px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    color: white;
+    font-family: GothamBold;
+    text-align: left;
+
+}
+
+.total {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    font-family: GothamBold;
+    background-color: #ff5863;
+    color: #ffffff;
+
+}
+
+#total {
+    margin-left: 5px;
+}
