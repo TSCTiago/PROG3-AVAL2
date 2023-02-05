@@ -170,3 +170,11 @@ select option {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
 }
+
+#inicio-th {
+    border-radius: 10px 0 0 0;
+}
+
+#final-th {
+    border-radius: 0 10px 0 0;
+}
