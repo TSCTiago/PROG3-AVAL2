@@ -34,10 +34,6 @@ body {
     box-shadow: 2px 5px 5px #555353;
 }
 
-
-.logo{
-    margin-left: 10px;
-}
 .navbar .logo a{
     color: white;
     font-size: 35px;
@@ -114,6 +110,7 @@ select option {
 .table {
     display: flex;
     align-items: center;
+    overflow-x: auto;
     justify-content: center;
 }
 
@@ -229,6 +226,7 @@ select option {
     .navbar .menu li, .active{
         opacity: 1;
     }
+
     .navbar .menu li a{
         display: inline-block;
         margin: 20px 0;
