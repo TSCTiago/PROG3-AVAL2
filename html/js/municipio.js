@@ -7,7 +7,6 @@ selectMunicipio.addEventListener('change', searchDataCandidateByMunicipio)
 
 function searchDataCandidateByMunicipio(event) {
     const value = selectMunicipio.options[selectMunicipio.selectedIndex].text;
-    // console.log(value)
     const xhr = new XMLHttpRequest()
 
     xhr.open('POST', '/search_data_candidate_by_municipio', true)
@@ -22,40 +21,35 @@ function searchDataCandidateByMunicipio(event) {
     const json = JSON.stringify(body)
     xhr.send(json)
 
-    xhr.onload = (event) => {
-        responseDataCandidateByMunicipio(xhr, event)
+    xhr.onload = () => {
+        responseDataCandidateByMunicipio(xhr)
     }
 }
 
 
-function responseDataCandidateByMunicipio(xhr, event) {
+function responseDataCandidateByMunicipio(xhr) {
     if (xhr.status != 200) {
         return;
     }
 
-    console.log(xhr.response)
     const data = JSON.parse(xhr.response)
 
-    let votos = []
+    let soma = 0;
+
     const tbody = document.querySelector('.table-body')
     tbody.innerHTML = ''
-    data.forEach((cand) => {
-        votos.push(cand.votos)
+
+    data.forEach((resp) => {
+        soma = soma + resp.cand_votos
         const tr = document.createElement('tr')
-        const status = cand.status == 1 ? 'Eleito' : 'Não Eleito'
-        const votes = Intl.NumberFormat('pt-br').format(cand.votos)
-        tr.innerHTML = `<td>${cand.nome}</td><td>${cand.cargo}</td><td>${votes}</td><td>${status}</td>`
+        const status = resp.cargo_nome == 1 ? 'Eleito' : 'Não Eleito'
+        const votes = Intl.NumberFormat('pt-br').format(resp.cand_votos)
+        tr.innerHTML = `<td>${resp.cand_nome}</td><td>${resp.cand_status}</td><td>${votes}</td><td>${status}</td>`
         tbody.appendChild(tr)
     })
 
-    let soma = 0;
-    for (var i = 0; i < votos.length; i++) {
-        soma += votos[i];
-    }
-    // console.log(soma);
-    const sumFormated = Intl.NumberFormat('pt-br').format(soma)
     const total = document.querySelector('#total')
-    total.innerHTML = `${sumFormated} votos`
+    total.innerHTML = `${Intl.NumberFormat('pt-br').format(soma)} votos`
 
 
 }

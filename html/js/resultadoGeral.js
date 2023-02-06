@@ -4,7 +4,6 @@ selectFilter.addEventListener('change', searchFinalResult)
 
 function searchFinalResult(event) {
     const valueSelect = selectFilter.options[selectFilter.selectedIndex].value;
-    // console.log(textSelected)
     const xhr = new XMLHttpRequest()
 
     xhr.open('POST', '/geral_result', true)
@@ -13,35 +12,35 @@ function searchFinalResult(event) {
 
 
     const body = {
-        value: valueSelect,
+        value: valueSelect
 
     }
 
     const json = JSON.stringify(body)
     xhr.send(json)
 
-    xhr.onload = (event) => {
-        responseGeralResult(xhr, event)
+    xhr.onload = () => {
+        responseGeralResult(xhr)
     }
 }
 
 
-function responseGeralResult(xhr, event) {
+function responseGeralResult(xhr) {
     if (xhr.status != 200) {
         return;
     }
 
-    console.log(xhr.response)
     const data = JSON.parse(xhr.response)
-    console.log(data)
 
     const tbody = document.querySelector('.table-body')
     tbody.innerHTML = ''
-    data.forEach((cand) => {
+
+    data.forEach((resp) => {
         const tr = document.createElement('tr')
-        const status = cand.status == 1 ? 'Eleito' : 'Não Eleito'
-        const votes = Intl.NumberFormat('pt-br').format(cand.votos)
-        tr.innerHTML = `<td>${cand.nome}</td><td>${cand.cargo}</td><td>${votes}</td><td>${status}</td>`
+
+        const status = resp.cand_status == 1 ? 'Eleito' : 'Não Eleito'
+        const votes = Intl.NumberFormat('pt-br').format(resp.cand_votos)
+        tr.innerHTML = `<td>${resp.cand_nome}</td><td>${resp.cargo_nome}</td><td>${votes}</td><td>${status}</td>`
         tbody.appendChild(tr)
     })
 

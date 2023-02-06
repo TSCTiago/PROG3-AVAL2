@@ -13,29 +13,29 @@ function searchDataCandidate(event) {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
     const body = {
-        name: `${value}`
+        name: value
     }
 
     const json = JSON.stringify(body)
     xhr.send(json)
 
-    xhr.onload = (event) => {
-        responseDataCandidate(xhr, event)
+    xhr.onload = () => {
+        responseDataCandidate(xhr)
     }
 }
 
-function responseDataCandidate(xhr, event) {
+function responseDataCandidate(xhr) {
 
     if (xhr.status != 200) {
         return;
     }
 
-    console.log(xhr.response)
     const data = JSON.parse(xhr.response)
-    console.log(data)
+
     const tbody = document.querySelector('.table-body')
     const status = data.cand_status == 1 ? 'Eleito' : 'Não Eleito'
     const votes = Intl.NumberFormat('pt-br').format(data.cand_votos)
+
     tbody.innerHTML = `<tr><td>${data.cand_nome}</td><td>${data.cargo_nome}</td><td>${votes}</td><td>${status}</td></tr>`
 
 }
