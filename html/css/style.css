@@ -27,7 +27,6 @@ section {
     display: flex;
     justify-content: center;
     align-content: center;
-   
 }
 
 img {
@@ -46,7 +45,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px; 
+    margin-top: 50px;
 }
 
 .links input {
@@ -79,9 +78,18 @@ img {
     .links{
         display: flex;
         flex-direction: column;
+        width: 300px;
+        height: 280px;
+        margin: auto;
+        background-color: #f6f6f6; 
+        border-radius: 20px;
     }
     
     .links input {
         margin: 10px;
+    }
+
+    body {
+        margin-top: 0;
     }
 }
