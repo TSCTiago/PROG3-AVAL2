@@ -7,6 +7,9 @@ selectMunicipio.addEventListener('change', searchDataCandidateByMunicipio)
 
 function searchDataCandidateByMunicipio(event) {
     const value = selectMunicipio.options[selectMunicipio.selectedIndex].text;
+    if(value == ''){
+        return
+    }
     const xhr = new XMLHttpRequest()
 
     xhr.open('POST', '/search_data_candidate_by_municipio', true)

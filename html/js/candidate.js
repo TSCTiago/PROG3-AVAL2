@@ -6,6 +6,9 @@ selectCandidates.addEventListener('change', searchDataCandidate)
 function searchDataCandidate(event) {
 
     const value = selectCandidates.options[selectCandidates.selectedIndex].text;
+    if (value == '') {
+        return
+    }
     const xhr = new XMLHttpRequest()
 
     xhr.open('POST', '/search_data_candidate', true)

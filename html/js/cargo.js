@@ -3,6 +3,9 @@ selectCargo.addEventListener('change', searchDataCandidateByCargo)
 
 function searchDataCandidateByCargo(event) {
     const value = selectCargo.options[selectCargo.selectedIndex].text;
+    if(value == ''){
+        return
+    }
 
     const xhr = new XMLHttpRequest()
 
