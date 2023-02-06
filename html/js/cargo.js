@@ -45,6 +45,4 @@ function responseDataCandidateByCargo(xhr) {
         tr.innerHTML = `<td>${resp.cand_nome}</td><td>${resp.cargo_nome}</td><td>${votes}</td><td>${status}</td>`
         tbody.appendChild(tr)
     })
-
-
 }

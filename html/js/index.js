@@ -1,4 +1,3 @@
-
 window.addEventListener("load", populateSelect);
 
 
@@ -19,7 +18,6 @@ function populateSelect(event) {
     }
     const json = JSON.stringify(body)
     xhr.send(json)
-
 }
 
 function result(xhr, event) {
@@ -31,7 +29,6 @@ function result(xhr, event) {
     data.forEach(function (param) {
         addOption(param)
     });
-
 }
 
 function addOption(param) {

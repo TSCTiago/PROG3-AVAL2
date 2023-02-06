@@ -40,5 +40,4 @@ function responseDataCandidate(xhr) {
     const votes = Intl.NumberFormat('pt-br').format(data.cand_votos)
 
     tbody.innerHTML = `<tr><td>${data.cand_nome}</td><td>${data.cargo_nome}</td><td>${votes}</td><td>${status}</td></tr>`
-
 }

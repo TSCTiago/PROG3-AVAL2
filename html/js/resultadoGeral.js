@@ -1,7 +1,6 @@
 const selectFilter = document.querySelector('select')
 selectFilter.addEventListener('change', searchFinalResult)
 
-
 function searchFinalResult(event) {
     const valueSelect = selectFilter.options[selectFilter.selectedIndex].value;
 
@@ -13,7 +12,6 @@ function searchFinalResult(event) {
     xhr.open('POST', '/geral_result', true)
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
 
     const body = {
         value: valueSelect
@@ -27,7 +25,6 @@ function searchFinalResult(event) {
         responseGeneralResult(xhr)
     }
 }
-
 
 function responseGeneralResult(xhr) {
     if (xhr.status != 200) {
@@ -47,5 +44,4 @@ function responseGeneralResult(xhr) {
         tr.innerHTML = `<td>${resp.cand_nome}</td><td>${resp.cargo_nome}</td><td>${votes}</td><td>${status}</td>`
         tbody.appendChild(tr)
     })
-
 }
