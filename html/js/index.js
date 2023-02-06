@@ -35,7 +35,7 @@ function result(xhr, event) {
 }
 
 function addOption(param) {
-    var option = new Option(param.name, param.id);
+    var option = new Option(param.nome, param.id);
     const select = document.querySelector('select')
     select.add(option);
 }

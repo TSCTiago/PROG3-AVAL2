@@ -17,7 +17,7 @@ app.post('/populate_select', endpoints.populateSelect)
 app.post('/search_data_candidate', endpoints.searchCandidate)
 app.post('/search_data_candidate_by_cargo', endpoints.searchCandidateByCargo)
 app.post('/search_data_candidate_by_municipio', endpoints.searchCandidateByMunicipio)
-app.post('/geral_result', endpoints.geralResult)
+app.post('/geral_result', endpoints.generalResult)
 
 
 // Listen at 8080 port

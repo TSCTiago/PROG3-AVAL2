@@ -4,6 +4,10 @@ selectFilter.addEventListener('change', searchFinalResult)
 
 function searchFinalResult(event) {
     const valueSelect = selectFilter.options[selectFilter.selectedIndex].value;
+
+    if(valueSelect == ''){
+        return
+    }
     const xhr = new XMLHttpRequest()
 
     xhr.open('POST', '/geral_result', true)
@@ -20,12 +24,12 @@ function searchFinalResult(event) {
     xhr.send(json)
 
     xhr.onload = () => {
-        responseGeralResult(xhr)
+        responseGeneralResult(xhr)
     }
 }
 
 
-function responseGeralResult(xhr) {
+function responseGeneralResult(xhr) {
     if (xhr.status != 200) {
         return;
     }

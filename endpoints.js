@@ -4,46 +4,51 @@ function populateSelect(request, response) {
     let name = request.body.table
 
     const querys = {
-        q1: `SELECT id, nome FROM candidato WHERE tipo=1 ORDER BY nome`,
-        q2: `SELECT id, nome FROM cargo ORDER BY id`,
-        q3: `SELECT id, nome FROM municipio ORDER BY nome`
+        q1: `SELECT
+             id, nome 
+             FROM candidato 
+             WHERE tipo=1 
+             ORDER BY nome`,
+
+        q2: `SELECT
+             id, nome 
+             FROM cargo 
+             ORDER BY id`,
+
+        q3: `SELECT
+             id, nome 
+             FROM municipio 
+             ORDER BY nome`
     }
+
     let sql = ''
 
-    if (name == 'candidato') {
-        sql = querys.q1
+    switch (name) {
+        case 'candidato':
+            sql = querys.q1;
+            break;
+        case 'cargo':
+            sql = querys.q2;
+            break;
+        case 'municipio':
+            sql = querys.q3;
+            break;
+        default:
+            break;
     }
-    else if (name == 'cargo') {
-        sql = querys.q2
 
-    }
-    else if (name == 'municipio') {
-        sql = querys.q3
-    }
+    databaseSearch(sql, response)
 
-    sqlite.database.all(sql, (error, rows) => {
-        if (error) {
-            throw Error(error.message)
-        }
-
-        const data = rows.map((param) => {
-            return {
-                id: param.id,
-                name: param.nome
-            }
-        })
-
-        const jsonOptionsValues = JSON.stringify(data)
-        response.send(jsonOptionsValues)
-    }
-    )
 
 }
 
 function searchCandidate(request, response) {
     const nome = request.body.name
 
-    const sql = `SELECT cand_nome, cargo_nome, cand_votos, cand_status  FROM votos_cand_estado where cand_nome like '${nome}'`
+    const sql = `SELECT 
+                cand_nome, cargo_nome, cand_votos, cand_status 
+                FROM votos_cand_estado
+                WHERE cand_nome like '${nome}'`
 
     sqlite.database.each(sql, (error, row) => {
         if (error) {
@@ -59,72 +64,92 @@ function searchCandidate(request, response) {
 
 function searchCandidateByCargo(request, response) {
     const cargo = request.body.cargo
-    const sql = `SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado where cargo_nome like '${cargo}' ORDER BY cand_votos DESC`
+    const sql = `SELECT 
+                cand_nome, cargo_nome, cand_votos, cand_status 
+                FROM votos_cand_estado 
+                WHERE cargo_nome 
+                LIKE '${cargo}' ORDER BY cand_votos DESC`
 
-    sqlite.database.all(sql, (error, rows) => {
-        if (error) {
-            throw Error(error.message)
-        }
-
-        const dataCandidateByCargo = JSON.stringify(rows)
-        response.send(dataCandidateByCargo)
-    }
-    )
+    databaseSearch(sql, response)
 
 }
 
 
 function searchCandidateByMunicipio(request, response) {
     const municipio = request.body.municipio
-    const sql = `SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_municipio where muni_nome like '${municipio}' ORDER BY cargo_id ASC, cand_votos DESC;`
+    const sql = `SELECT 
+                cand_nome, cargo_nome, cand_votos, cand_status 
+                FROM votos_cand_municipio 
+                WHERE muni_nome 
+                LIKE '${municipio}' 
+                ORDER BY cargo_id ASC, cand_votos DESC;`
 
-    sqlite.database.all(sql, (error, rows) => {
-        if (error) {
-            throw Error(error.message)
-        }
-
-        const dataCandidateByMunicipio = JSON.stringify(rows)
-        response.send(dataCandidateByMunicipio)
-    }
-    )
+    databaseSearch(sql, response)
 }
 
-function geralResult(request, response) {
+function generalResult(request, response) {
 
     const value = request.body.value
-    let sql = ''
+
     const querys = {
-        q1: `SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado ORDER BY cargo_id ASC, cand_votos DESC;`,
-        q2: `SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado where cand_status=${value} ORDER BY cargo_id ASC, cand_votos DESC;`,
-        q3: `SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado where cand_status=0 OR cand_status=2 ORDER BY cargo_id ASC, cand_votos DESC;`
+        q1: `SELECT 
+            cand_nome, cargo_nome, cand_votos, cand_status 
+            FROM votos_cand_estado 
+            ORDER BY cargo_id ASC, cand_votos DESC;`,
+
+        q2: `SELECT 
+            cand_nome, cargo_nome, cand_votos, cand_status 
+            FROM votos_cand_estado 
+            WHERE cand_status=${value} 
+            ORDER BY cargo_id ASC, cand_votos DESC;`,
+
+        q3: `SELECT 
+            cand_nome, cargo_nome, cand_votos, cand_status 
+            FROM votos_cand_estado 
+            WHERE cand_status=0 OR cand_status=2 
+            ORDER BY cargo_id ASC, cand_votos DESC;`
     }
 
-    if (value == 0) {
-        sql = querys.q1
-    }
-    else if (value == 1) {
-        sql = querys.q2
-    }
-    else {
-        sql = querys.q3
+    let sql = ''
+
+    switch (value) {
+        case '0':
+            sql = querys.q1;
+            break;
+        case '1':
+            sql = querys.q2;
+            break;
+        case '2':
+            sql = querys.q3;
+            break;
+        default:
+            break;
+
     }
 
-    sqlite.database.all(sql, (error, rows) => {
-        if (error) {
-            throw Error(error.message)
-        }
-        const geralResult = JSON.stringify(rows)
-        response.send(geralResult)
-    }
-    )
+    databaseSearch(sql, response)
 
 
 }
+
+function databaseSearch(query, response) {
+
+    sqlite.database.all(query, (error, rows) => {
+        if (error) {
+            throw Error(error.message)
+        }
+
+        const tuples = JSON.stringify(rows)
+
+        response.send(tuples)
+    })
+}
+
 
 module.exports = {
     populateSelect,
     searchCandidate,
     searchCandidateByCargo,
     searchCandidateByMunicipio,
-    geralResult
+    generalResult
 }
