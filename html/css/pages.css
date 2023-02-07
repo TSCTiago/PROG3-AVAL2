@@ -17,6 +17,7 @@ body {
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
+    background-size: cover;
     background-image: linear-gradient(rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.822)), url('../assets/img/background-image.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -57,6 +58,7 @@ body {
 
 .navbar ul li a {
     font-family: GothamBold;
+    text-transform: capitalize;
     color: white;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
