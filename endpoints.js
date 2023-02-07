@@ -1,4 +1,4 @@
-const sqlite = require('./database')
+const sqlite = require('./db/database')
 
 function populateSelect(request, response) {
     let name = request.body.table
