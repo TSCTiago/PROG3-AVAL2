@@ -1,9 +1,6 @@
 const selectMunicipio = document.querySelector('select')
 
-
 selectMunicipio.addEventListener('change', searchDataCandidateByMunicipio)
-
-
 
 function searchDataCandidateByMunicipio(event) {
     const value = selectMunicipio.options[selectMunicipio.selectedIndex].text;
@@ -16,7 +13,6 @@ function searchDataCandidateByMunicipio(event) {
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-
     const body = {
         municipio: value
     }
@@ -28,7 +24,6 @@ function searchDataCandidateByMunicipio(event) {
         responseDataCandidateByMunicipio(xhr)
     }
 }
-
 
 function responseDataCandidateByMunicipio(xhr) {
     if (xhr.status != 200) {
@@ -53,6 +48,4 @@ function responseDataCandidateByMunicipio(xhr) {
 
     const total = document.querySelector('#total')
     total.innerHTML = `${Intl.NumberFormat('pt-br').format(soma)} votos`
-
-
 }
