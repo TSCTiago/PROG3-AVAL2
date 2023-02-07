@@ -38,12 +38,24 @@ function responseDataCandidateByMunicipio(xhr) {
     tbody.innerHTML = ''
 
     data.forEach((resp) => {
+        
         soma = soma + resp.cand_votos
-        const tr = document.createElement('tr')
-        const status = resp.cargo_nome == 1 ? 'Eleito' : 'Não Eleito'
+
+        const tr = document.createElement('tr');
+        
+        const name = resp.cand_nome
+        const cargo = resp.cand_status
         const votes = Intl.NumberFormat('pt-br').format(resp.cand_votos)
-        tr.innerHTML = `<td>${resp.cand_nome}</td><td>${resp.cand_status}</td><td>${votes}</td><td>${status}</td>`
-        tbody.appendChild(tr)
+        const status = resp.cargo_nome == 1 ? 'Eleito' : 'Não Eleito'
+
+        const tds = [name, cargo, votes, status].map(content => {
+            const td = document.createElement('td');
+            td.textContent = content;
+            return td;
+        });
+
+        tr.append(...tds);
+        tbody.appendChild(tr);
     })
 
     const total = document.querySelector('#total')

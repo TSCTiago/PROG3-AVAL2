@@ -47,7 +47,7 @@ img {
     margin-top: 50px;
 }
 
-.links input {
+.links a button {
     margin: 0 20px;
     background-color: #ffa334;
     padding: 10px;
@@ -62,29 +62,30 @@ img {
     cursor: pointer;
 }
 
-.links input:hover {
+.links a button:hover {
     background-color: #3c389e;
     color: #ffa334;
-    
+
 }
 
+
 @media only screen and (max-width: 1136px) {
-    
+
     img {
         width: 50%;
     }
-    
-    .links{
+
+    .links {
         display: flex;
         flex-direction: column;
         width: 300px;
         height: 280px;
         margin: auto;
-        background-color: #f6f6f6; 
+        background-color: #f6f6f6;
         border-radius: 20px;
     }
-    
-    .links input {
+
+    .links button {
         margin: 10px;
     }
 

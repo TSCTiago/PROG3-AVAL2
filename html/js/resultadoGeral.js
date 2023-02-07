@@ -4,7 +4,7 @@ selectFilter.addEventListener('change', searchFinalResult)
 function searchFinalResult(event) {
     const value = selectFilter.options[selectFilter.selectedIndex].value;
 
-    if(value == ''){
+    if (value == '') {
         return
     }
     const xhr = new XMLHttpRequest()
@@ -37,11 +37,22 @@ function responseGeneralResult(xhr) {
     tbody.innerHTML = ''
 
     data.forEach((resp) => {
-        const tr = document.createElement('tr')
-
-        const status = resp.cand_status == 1 ? 'Eleito' : 'Não Eleito'
+        const tr = document.createElement('tr');
+        
+        const name = resp.cand_nome
+        const cargo = resp.cargo_nome
         const votes = Intl.NumberFormat('pt-br').format(resp.cand_votos)
-        tr.innerHTML = `<td>${resp.cand_nome}</td><td>${resp.cargo_nome}</td><td>${votes}</td><td>${status}</td>`
-        tbody.appendChild(tr)
+        const status = resp.cand_status == 1 ? 'Eleito' : 'Não Eleito'
+
+        const tds = [name, cargo, votes, status].map(content => {
+            const td = document.createElement('td');
+            td.textContent = content;
+            return td;
+        });
+
+        tr.append(...tds);
+        tbody.appendChild(tr);
     })
+
+
 }

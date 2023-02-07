@@ -36,8 +36,21 @@ function responseDataCandidate(xhr) {
     const data = JSON.parse(xhr.response)
 
     const tbody = document.querySelector('.table-body')
-    const status = data.cand_status == 1 ? 'Eleito' : 'Não Eleito'
-    const votes = Intl.NumberFormat('pt-br').format(data.cand_votos)
+    tbody.innerHTML = ''
 
-    tbody.innerHTML = `<tr><td>${data.cand_nome}</td><td>${data.cargo_nome}</td><td>${votes}</td><td>${status}</td></tr>`
+    const tr = document.createElement('tr');
+        
+        const name = data.cand_nome
+        const cargo = data.cargo_nome
+        const votes = Intl.NumberFormat('pt-br').format(data.cand_votos)
+        const status = data.cand_status == 1 ? 'Eleito' : 'Não Eleito'
+
+        const tds = [name, cargo, votes, status].map(content => {
+            const td = document.createElement('td');
+            td.textContent = content;
+            return td;
+        });
+
+        tr.append(...tds);
+        tbody.appendChild(tr);
 }
