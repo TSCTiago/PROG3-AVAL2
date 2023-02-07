@@ -3,9 +3,9 @@ selectFilter.addEventListener('change', searchFinalResult)
 
 
 function searchFinalResult(event) {
-    const valueSelect = selectFilter.options[selectFilter.selectedIndex].value;
+    const value = selectFilter.options[selectFilter.selectedIndex].value;
 
-    if(valueSelect == ''){
+    if(value == ''){
         return
     }
     const xhr = new XMLHttpRequest()
@@ -16,7 +16,7 @@ function searchFinalResult(event) {
 
 
     const body = {
-        value: valueSelect
+        value: value
 
     }
 

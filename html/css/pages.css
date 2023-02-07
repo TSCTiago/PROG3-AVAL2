@@ -17,14 +17,14 @@ body {
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.822)),url('../assets/img/background-image.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.685), rgba(0, 0, 0, 0.822)), url('../assets/img/background-image.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 100% 45%;
 }
 
 
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,10 +35,11 @@ body {
 }
 
 
-.logo{
+.logo {
     margin-left: 10px;
 }
-.navbar .logo a{
+
+.navbar .logo a {
     color: white;
     font-size: 35px;
     font-weight: 500;
@@ -49,6 +50,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 .navbar ul li {
     list-style: none;
     margin: 0 20px;
@@ -60,23 +62,26 @@ body {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
+
 .navbar ul li a:hover {
     color: #ffa334;
 }
 
-.menu-btn{
+.menu-btn {
     color: white;
     font-size: 26px;
     cursor: pointer;
     display: none;
 }
-.menu-btn img{
+
+.menu-btn img {
     width: 30px;
 }
 
-.logo img{
+.logo img {
     width: 80px;
 }
+
 h1 {
     font-family: GothamBold;
     text-transform: uppercase;
@@ -196,14 +201,14 @@ select option {
 }
 
 @media (max-width:970px) {
-    .menu-btn{
+    .menu-btn {
         display: block;
         z-index: 999;
         margin-right: 10px;
         transition: all 0.3s ease-out;
     }
-    
-    .navbar ul{
+
+    .navbar ul {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -214,25 +219,50 @@ select option {
         height: 100vh;
         top: 0;
         right: 0;
+        z-index: -1;
         margin-top: -100%;
         background: #3c389e;
         text-align: center;
         transition: all 0.4s ease;
     }
 
-    .navbar .menu.active{
+    .navbar .menu.active {
         margin-top: 0;
         opacity: 1;
         visibility: visible;
+        z-index: 1;
     }
-   
-    .navbar .menu li, .active{
+
+    .navbar .menu li,
+    .active {
         opacity: 1;
     }
-    .navbar .menu li a{
+
+    .navbar .menu li a {
         display: inline-block;
         margin: 20px 0;
         font-size: 25px;
     }
-    
+
+}
+
+@media (max-width:500px) {
+    h1 {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+
+    select,
+    .styled-table,
+    .total {
+        width: 80%;
+    }
+
+    .total{
+        margin-top: 40px;
+    }
+    .styled-table{
+        overflow-x: auto;
+    }
+
 }
