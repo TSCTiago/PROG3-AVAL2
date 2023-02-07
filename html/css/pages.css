@@ -127,7 +127,7 @@ select option {
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     font-family: sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -265,6 +265,7 @@ select option {
     }
     .styled-table{
         overflow-x: auto;
+        font-size: 0.7rem;
     }
 
 }
