@@ -3,7 +3,9 @@ selectCargo.addEventListener('change', searchDataCandidateByCargo)
 
 function searchDataCandidateByCargo(event) {
     const value = selectCargo.options[selectCargo.selectedIndex].text;
-    if(value == ''){
+
+    if(value == 'Selecione um cargo'){
+        clearTable()
         return
     }
 
@@ -53,4 +55,9 @@ function responseDataCandidateByCargo(xhr) {
         tr.append(...tds);
         tbody.appendChild(tr);
     })
+}
+
+function clearTable(){
+    const tbody = document.querySelector('.table-body')
+    tbody.innerHTML = ''
 }

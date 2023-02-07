@@ -5,6 +5,7 @@ function searchFinalResult(event) {
     const value = selectFilter.options[selectFilter.selectedIndex].value;
 
     if (value == '') {
+        clearTable()
         return
     }
     const xhr = new XMLHttpRequest()
@@ -55,4 +56,10 @@ function responseGeneralResult(xhr) {
     })
 
 
+}
+
+
+function clearTable(){
+    const tbody = document.querySelector('.table-body')
+    tbody.innerHTML = ''
 }

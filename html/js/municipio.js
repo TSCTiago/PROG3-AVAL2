@@ -4,7 +4,8 @@ selectMunicipio.addEventListener('change', searchDataCandidateByMunicipio)
 
 function searchDataCandidateByMunicipio(event) {
     const value = selectMunicipio.options[selectMunicipio.selectedIndex].text;
-    if(value == ''){
+    if(value == 'Selecione um município'){
+        clearTable()
         return
     }
     const xhr = new XMLHttpRequest()
@@ -60,4 +61,13 @@ function responseDataCandidateByMunicipio(xhr) {
 
     const total = document.querySelector('#total')
     total.innerHTML = `${Intl.NumberFormat('pt-br').format(soma)} votos`
+}
+
+function clearTable(){
+    const tbody = document.querySelector('.table-body')
+    tbody.innerHTML = ''
+
+    const result = document.querySelector('#total')
+
+    result.innerHTML =''
 }

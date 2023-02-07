@@ -6,9 +6,12 @@ selectCandidates.addEventListener('change', searchDataCandidate)
 function searchDataCandidate(event) {
 
     const value = selectCandidates.options[selectCandidates.selectedIndex].text;
-    if (value == '') {
+
+    if (value == 'Selecione o candidato') {
+        clearTable()
         return
     }
+
     const xhr = new XMLHttpRequest()
 
     xhr.open('POST', '/search_data_candidate', true)
@@ -53,4 +56,9 @@ function responseDataCandidate(xhr) {
 
         tr.append(...tds);
         tbody.appendChild(tr);
+}
+
+function clearTable(){
+    const tbody = document.querySelector('.table-body')
+    tbody.innerHTML = ''
 }
