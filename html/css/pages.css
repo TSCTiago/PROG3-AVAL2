@@ -212,6 +212,7 @@ select option {
         height: 100vh;
         top: 0;
         right: 0;
+        z-index: -1;
         margin-top: -100%;
         background: #3c389e;
         text-align: center;
@@ -222,6 +223,7 @@ select option {
         margin-top: 0;
         opacity: 1;
         visibility: visible;
+        z-index: 1;
     }
    
     .navbar .menu li, .active{
