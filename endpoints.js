@@ -48,7 +48,7 @@ function searchCandidate(request, response) {
     const sql = `SELECT 
                 cand_nome, cargo_nome, cand_votos, cand_status 
                 FROM votos_cand_estado
-                WHERE cand_nome like '${nome}'`
+                WHERE cand_nome LIKE '${nome}'`
 
     sqlite.database.each(sql, (error, row) => {
         if (error) {

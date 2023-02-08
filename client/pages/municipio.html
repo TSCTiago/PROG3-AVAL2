@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
-    <title>Candidato</title>
     <link rel="stylesheet" href="../css/pages.css">
+    <title>Município</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="navbar">     
             <ul class="menu">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="candidate.html">Por Candidato</a></li>
                 <li><a href="cargo.html">Por Cargo</a></li>
                 <li><a href="municipio.html">Por município</a></li>
-                <li><a href="resultadoGeral.html">Resultado geral</a></li>
+                <li><a href="generalResult.html">Resultado geral</a></li>
             </ul>
             <div class="logo"><img src="../assets/img/logo.png" alt="log"></div>
             <div class="menu-btn">
@@ -28,11 +27,11 @@
     </header>
     <section class="pages">
         <div>
-            <h1>Ver resultados por Candidato</h1>
+            <h1>Ver resultados por município</h1>
         </div>
         <div>
-            <select name="candidato" id="candidato">
-                <option value="">Selecione o candidato</option>
+            <select name="municipio" id="municipio">
+                <option value="">Selecione um município</option>
             </select>
         </div>
         <div class="table">
@@ -43,21 +42,24 @@
                         <th>Cargo</th>
                         <th>Votação</th>
                         <th id="final-th">Status</th>
-
+                        
                     </tr>
                 </thead>
-                <tbody class="table-body">
-
-                </tbody>
+                <tbody class="table-body"></tbody>
             </table>
         </div>
+        <div class="total">
+            <p>Totatização:</p>
+            <div id="total"></div>
+        </div>
     </section>
+
     <div class="btn-top" id="btn-top">
         <i class="arrow up"></i>
     </div>
-    <script src="../js/components/btn-top.js"></script>
-    <script src="../js/index.js"></script>
-    <script src="../js/candidate.js"></script>
-</body>
 
+    <script src="../js/index.js"></script>
+    <script src="../js/municipio.js"></script>
+    <script src="../js/components/btn-top.js"></script>
+</body>
 </html>

@@ -5,7 +5,7 @@ const endpoints = require('./endpoints')
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('./html'))
+app.use(express.static('./client'))
 app.use(express.json())
 
 app.post('/populate_select', endpoints.populateSelect)

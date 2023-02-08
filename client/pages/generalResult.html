@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/pages.css">
-    <title>Município</title>
+    <title>Resultado Geral</title>
 </head>
-
+<style>
+    .total{
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+    }
+</style>
 <body>
     <header>
         <nav class="navbar">     
@@ -17,7 +23,7 @@
                 <li><a href="candidate.html">Por Candidato</a></li>
                 <li><a href="cargo.html">Por Cargo</a></li>
                 <li><a href="municipio.html">Por município</a></li>
-                <li><a href="resultadoGeral.html">Resultado geral</a></li>
+                <li><a href="generalResult.html">Resultado geral</a></li>
             </ul>
             <div class="logo"><img src="../assets/img/logo.png" alt="log"></div>
             <div class="menu-btn">
@@ -27,11 +33,14 @@
     </header>
     <section class="pages">
         <div>
-            <h1>Ver resultados por município</h1>
+            <h1>Ver resultados Gerais</h1>
         </div>
         <div>
-            <select name="municipio" id="municipio">
-                <option value="">Selecione um município</option>
+            <select name="resultado" id="resultado">
+                <option value="">Selecione um filtro</option>
+                <option value="0">Todos</option>
+                <option value="1">Eleitos</option>
+                <option value="2">Não Eleitos</option>
             </select>
         </div>
         <div class="table">
@@ -41,16 +50,11 @@
                         <th id="inicio-th">Nome</th>
                         <th>Cargo</th>
                         <th>Votação</th>
-                        <th id="final-th">Status</th>
-                        
+                        <th id="final-th">Status</th>              
                     </tr>
                 </thead>
                 <tbody class="table-body"></tbody>
             </table>
-        </div>
-        <div class="total">
-            <p>Totatização:</p>
-            <div id="total"></div>
         </div>
     </section>
 
@@ -58,8 +62,7 @@
         <i class="arrow up"></i>
     </div>
 
-    <script src="../js/index.js"></script>
-    <script src="../js/municipio.js"></script>
+    <script src="../js/generalResult.js"></script>
     <script src="../js/components/btn-top.js"></script>
 </body>
 </html>
