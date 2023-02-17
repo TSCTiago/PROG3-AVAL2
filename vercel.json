@@ -1,5 +1,7 @@
 {
+    "name": "deploy vercel",
     "version": 2,
+    "public": true,
     "builds": [
       {
         "src": "./server.js",
